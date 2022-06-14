@@ -1,17 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestHello(t *testing.T) {
-	got := Hello("Ryan")
-	want := "Hello, Ryan"
-
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
+	assertCorrectMessage := func(t testing.TB, got, want string) {
+		t.Helper()
+		if got != want {
+			t.Errorf("got: %q want: %q", got, want)
+		}
 	}
 
-	fmt.Printf("got %q want %q", got, want)
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Ryan")
+		want := "Hello, Ryan"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("saying 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World"
+
+		assertCorrectMessage(t, got, want)
+	})
 }
