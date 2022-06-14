@@ -11,18 +11,23 @@ func Hello(n, l string) string {
 		n = "World"
 	}
 
-	prefix := englishHelloPrefix
+	var prefix string
 
 	switch l {
 	case "French":
 		prefix = frenchHelloPrefix
 	case "Spanish":
 		prefix = spanishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
 	}
 
 	return prefix + n
 }
 
 func main() {
-	fmt.Println(Hello("World", "English"))
+
+	name := "Ryan"
+
+	fmt.Println(Hello(name, "English"))
 }
