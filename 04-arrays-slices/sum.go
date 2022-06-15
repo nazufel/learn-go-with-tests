@@ -21,3 +21,18 @@ func SumAll(n ...[]int) (s []int) {
 
 	return sums
 }
+
+func SumAllTails(n ...[]int) []int {
+	var sums []int
+
+	for _, num := range n {
+		if len(num) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := num[1:]
+			sums = append(sums, Sum(tail))
+		}
+	}
+
+	return sums
+}
