@@ -10,3 +10,14 @@ func Sum(numbers []int) int {
 
 	return sum
 }
+
+func SumAll(n ...[]int) (s []int) {
+
+	var sums []int
+
+	for _, numbers := range n {
+		sums = append(sums, Sum(numbers))
+	}
+
+	return sums
+}
