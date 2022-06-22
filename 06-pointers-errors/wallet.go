@@ -1,10 +1,18 @@
 package wallet
 
-type Wallet struct{}
+import "fmt"
 
-func (w Wallet) Depost(amount int) {}
+type Wallet struct {
+	balance int
+}
 
-func (w Wallet) Balance() int {
+func (w *Wallet) Depost(amount int) {
 
-	return 0
+	fmt.Printf("address of balance in Deposit is %v \n", &w.balance)
+	w.balance += amount
+}
+
+func (w *Wallet) Balance() int {
+
+	return w.balance
 }
